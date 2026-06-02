@@ -37,3 +37,11 @@ Used mantine for the ui library.
 ### React query
 
 Used react query for the data fetching.
+
+## Features
+
+### Breadrumbs and navigation
+
+Breadcrumbs are automatically generated based on the routes. So the routes should be well structured.
+
+Navigation is done with react router.
