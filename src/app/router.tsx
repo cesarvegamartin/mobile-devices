@@ -35,7 +35,8 @@ const routes: RouteObject[] = [
 					},
 					{
 						path: ':id',
-						element: <div>Product Detail</div>,
+						lazy: async () =>
+							import('@/module/product/detail/ProductDetail.route'),
 						handle: {
 							title: 'Detail',
 						},
