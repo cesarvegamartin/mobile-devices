@@ -31,7 +31,7 @@ const routes: RouteObject[] = [
 				children: [
 					{
 						index: true,
-						element: <div>Product List</div>,
+						lazy: async () => import('@/module/product/list/ProductList.route'),
 					},
 					{
 						path: ':id',

@@ -5,7 +5,13 @@ import type { RouteObject } from '@/app/router';
 
 const AppHeader = () => {
 	return (
-		<NavLink to="/" style={{ textDecoration: 'none' }}>
+		<NavLink
+			style={{
+				textDecoration: 'none',
+				color: 'inherit',
+			}}
+			to="/"
+		>
 			<Group p="md" maw={1400} mx="auto">
 				<ThemeIcon size="xl" radius="xl" color="blue" mr="md">
 					<IconCode />
