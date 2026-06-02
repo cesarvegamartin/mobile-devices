@@ -1,10 +1,23 @@
-import { createBrowserRouter, type RouteObject, redirect } from 'react-router';
+import {
+	createBrowserRouter,
+	type RouteObject as ReactRouteObject,
+	redirect,
+} from 'react-router';
 import AppLayout from '@/display/layout/AppLayout';
+
+export type RouteObject = ReactRouteObject & {
+	handle?: {
+		title: string;
+	};
+};
 
 const routes: RouteObject[] = [
 	{
 		path: '/',
 		element: <AppLayout />,
+		handle: {
+			title: 'Home',
+		},
 		children: [
 			{
 				index: true,
@@ -12,6 +25,9 @@ const routes: RouteObject[] = [
 			},
 			{
 				path: 'products',
+				handle: {
+					title: 'Products',
+				},
 				children: [
 					{
 						index: true,
@@ -20,6 +36,9 @@ const routes: RouteObject[] = [
 					{
 						path: ':id',
 						element: <div>Product Detail</div>,
+						handle: {
+							title: 'Detail',
+						},
 					},
 				],
 			},

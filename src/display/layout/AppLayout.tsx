@@ -1,6 +1,47 @@
-import { AppShell, Group, Text, ThemeIcon } from '@mantine/core';
+import { AppShell, Breadcrumbs, Group, Text, ThemeIcon } from '@mantine/core';
 import { IconCode } from '@tabler/icons-react';
-import { Outlet } from 'react-router';
+import { NavLink, Outlet, useMatches } from 'react-router';
+import type { RouteObject } from '@/app/router';
+
+const AppHeader = () => {
+	return (
+		<NavLink to="/" style={{ textDecoration: 'none' }}>
+			<Group p="md" maw={1400} mx="auto">
+				<ThemeIcon size="xl" radius="xl" color="blue" mr="md">
+					<IconCode />
+				</ThemeIcon>
+				<Text size="xl">Mobile Devices</Text>
+			</Group>
+		</NavLink>
+	);
+};
+
+const AppBreadcrumbs = () => {
+	const matches = useMatches();
+
+	const items = matches.reduce(
+		(acc, match) => {
+			const pathname = match.pathname.replace(/\/$/, '') || '/';
+			if (acc[pathname]) {
+				return acc;
+			}
+			const title = (match as RouteObject).handle?.title || match.pathname;
+			acc[pathname] = title;
+			return acc;
+		},
+		{} as Record<string, string>,
+	);
+
+	return (
+		<Breadcrumbs my={20}>
+			{Object.entries(items).map(([pathname, title], index) => (
+				<NavLink key={index} to={pathname}>
+					{title}
+				</NavLink>
+			))}
+		</Breadcrumbs>
+	);
+};
 
 const AppLayout = (props: AppLayoutProps) => {
 	const { children = <Outlet /> } = props;
@@ -13,15 +54,11 @@ const AppLayout = (props: AppLayoutProps) => {
 			padding="md"
 		>
 			<AppShell.Header>
-				<Group p="md" maw={1400} mx="auto">
-					<ThemeIcon size="xl" radius="xl" color="blue" mr="md">
-						<IconCode />
-					</ThemeIcon>
-					<Text size="xl">Mobile Devices</Text>
-				</Group>
+				<AppHeader />
 			</AppShell.Header>
 
 			<AppShell.Main pt="var(--app-shell-header-height)">
+				<AppBreadcrumbs />
 				{children}
 			</AppShell.Main>
 		</AppShell>
