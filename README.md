@@ -80,3 +80,4 @@ The cart enpodint does not returns the count, so I increase the counter in the s
 - Initial loader when the backend sandbox is not ready.
 - Show notifications for query error scenarios.
 - Query filter can be improved to return more data.
+- Environment is included in git for testing purposes. It is not a good practice and it is not necessary.
