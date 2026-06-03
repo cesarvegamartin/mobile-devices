@@ -26,7 +26,13 @@ const createDataFilter = (search: ProductListServiceProps['search']) => {
 const ProductListService = async (props: ProductListServiceProps) => {
 	const { search } = props;
 
-	const res = await fetch(`${import.meta.env.VITE_API_URL}/product`);
+	const url = new URL(`${import.meta.env.VITE_API_URL}/product`);
+
+	if (search) {
+		url.search = new URLSearchParams({ search }).toString();
+	}
+
+	const res = await fetch(url.toString());
 	const data: ProductModel[] = await res.json();
 
 	const filteredData = data.filter(createDataFilter(search));
