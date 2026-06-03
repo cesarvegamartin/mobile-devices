@@ -41,7 +41,7 @@ const ProductListController = () => {
 					<TextInput
 						ref={inputRef}
 						flex={1}
-						placeholder="Search products..."
+						placeholder="Search by brand or model..."
 						value={inputSearch}
 						onChange={setInputSearch}
 						onKeyDown={(e) => {
@@ -50,7 +50,11 @@ const ProductListController = () => {
 							}
 						}}
 						rightSection={
-							<ActionIcon size="md" onClick={confirmSearch}>
+							<ActionIcon
+								loading={query.isLoading}
+								size="md"
+								onClick={confirmSearch}
+							>
 								<IconSearch size={20} />
 							</ActionIcon>
 						}
