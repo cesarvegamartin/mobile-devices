@@ -31,7 +31,7 @@ const ProductListItemView = (props: ProductListItemViewProps) => {
 		>
 			<Card shadow="sm" padding="lg" withBorder>
 				<Card.Section>
-					<AspectRatio ratio={160 / 212} mx="auto">
+					<AspectRatio ratio={160 / 212} mx="auto" bg="#ddd">
 						<Image
 							src={product.imgUrl}
 							fallbackSrc={`https://placehold.co/160x212?text=${product.brand}`}
