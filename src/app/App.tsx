@@ -1,4 +1,5 @@
 import { createTheme, MantineProvider } from '@mantine/core';
+import { Notifications } from '@mantine/notifications';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { RouterProvider } from 'react-router';
@@ -12,6 +13,7 @@ function App() {
 		<QueryClientProvider client={queryClient}>
 			<MantineProvider theme={theme}>
 				<ReactQueryDevtools initialIsOpen={false} />
+				<Notifications />
 				<RouterProvider router={router} />
 			</MantineProvider>
 		</QueryClientProvider>

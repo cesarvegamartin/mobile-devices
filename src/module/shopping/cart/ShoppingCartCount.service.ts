@@ -13,6 +13,8 @@ const addCount = (addCount: number) => {
 	Cookies.set('cartCount', String(newCount), {
 		expires: import.meta.env.VITE_CACHE_IN_HOURS / 24,
 	});
+
+	return newCount;
 };
 
 const ShoppingCartCountService = {
