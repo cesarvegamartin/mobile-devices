@@ -8,7 +8,7 @@ const isStringMatch = (search?: string, value?: string) => {
 	if (!search || !value) {
 		return true;
 	}
-	return search.toLowerCase().includes(value.toLowerCase());
+	return value.toLowerCase().includes(search.toLowerCase());
 };
 
 const createDataFilter = (search: ProductListServiceProps['search']) => {
