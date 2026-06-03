@@ -1,9 +1,9 @@
 import { createTheme, MantineProvider } from '@mantine/core';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider } from 'react-router';
+import queryClient from '@/core/query/queryClient';
 import router from './router';
 
-const queryClient = new QueryClient();
 const theme = createTheme({});
 
 function App() {

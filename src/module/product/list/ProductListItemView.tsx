@@ -1,11 +1,11 @@
 import {
+	AspectRatio,
 	Badge,
 	Button,
 	Card,
 	Group,
 	Image,
 	Text,
-	useHovered,
 } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
 import { NavLink } from 'react-router';
@@ -31,7 +31,12 @@ const ProductListItemView = (props: ProductListItemViewProps) => {
 		>
 			<Card shadow="sm" padding="lg" withBorder>
 				<Card.Section>
-					<Image src={product.imgUrl} alt="Norway" />
+					<AspectRatio ratio={160 / 212} mx="auto">
+						<Image
+							src={product.imgUrl}
+							fallbackSrc={`https://placehold.co/160x212?text=${product.brand}`}
+						/>
+					</AspectRatio>
 				</Card.Section>
 
 				<Group justify="space-between" mt="md" mb="xs">

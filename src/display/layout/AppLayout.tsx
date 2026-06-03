@@ -2,23 +2,28 @@ import { AppShell, Breadcrumbs, Group, Text, ThemeIcon } from '@mantine/core';
 import { IconCode } from '@tabler/icons-react';
 import { NavLink, Outlet, useMatches } from 'react-router';
 import type { RouteObject } from '@/app/router';
+import ShoppingCartWidget from '@/module/shopping/cart/ShoppingCartWidget';
 
 const AppHeader = () => {
 	return (
-		<NavLink
-			style={{
-				textDecoration: 'none',
-				color: 'inherit',
-			}}
-			to="/"
-		>
-			<Group p="md" maw={1400} mx="auto">
+		<Group p="md" maw={1400} mx="auto">
+			<NavLink
+				style={{
+					textDecoration: 'none',
+					color: 'inherit',
+				}}
+				to="/"
+			>
 				<ThemeIcon size="xl" radius="xl" color="blue" mr="md">
 					<IconCode />
 				</ThemeIcon>
-				<Text size="xl">Mobile Devices</Text>
-			</Group>
-		</NavLink>
+			</NavLink>
+			<Text flex={1} size="xl">
+				Mobile Devices
+			</Text>
+
+			<ShoppingCartWidget />
+		</Group>
 	);
 };
 
@@ -56,7 +61,7 @@ const AppLayout = (props: AppLayoutProps) => {
 		<AppShell
 			maw={1400}
 			mx="auto"
-			header={{ height: 80, collapsed: false }}
+			header={{ height: 70, collapsed: false }}
 			padding="md"
 		>
 			<AppShell.Header>

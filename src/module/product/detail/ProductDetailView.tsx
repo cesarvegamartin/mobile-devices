@@ -1,4 +1,5 @@
 import { Badge, Grid, Image, Table, Text, Title } from '@mantine/core';
+import ShoppingAddProductController from '@/module/shopping/add-product/ShoppingAddProductController';
 import type ProductDetailModel from './ProductDetailModel';
 
 type ProductDetailSpecificationProps = {
@@ -89,6 +90,8 @@ const ProductDetailView = (props: ProductDetailViewProps) => {
 						<ProductDetailSpecification title="Weight" data={product.weight} />
 					</Table.Tbody>
 				</Table>
+
+				{product.price && <ShoppingAddProductController product={product} />}
 			</Grid.Col>
 		</Grid>
 	);
